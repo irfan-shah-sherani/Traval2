@@ -12,11 +12,13 @@ const session = require("express-session");
 const username = process.env.username;
 const password =process.env.password;
 
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -46,9 +48,12 @@ db.connect((error) => {
   console.log("Database is connected");
 });
 
-app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname,"views","login.html"))
-})
+// app.get("/",(req,res)=>{
+//     res.sendFile(path.join(__dirname,"views","login.html"))
+// })
+app.get("/", (req, res) => {
+    res.render("login"); // Will load views/login.ejs
+  });
 app.post("/login",(req,res)=>{
     const {username,password }= req.body;
     if (username === "admin" && password === "123") {
