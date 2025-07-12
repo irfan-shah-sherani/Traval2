@@ -153,7 +153,7 @@ app.post("/SaveRecords", (req, res) => {
     reference_number,
     passport_number,
   } = req.body;
-
+  baseURL = process.env.baseURL;
   const record_id = crypto.randomBytes(4).toString("hex");
 //   const qrcode_url = `http://localhost:3000/form/?id=${record_id}`;
   const qrcode_url = `${baseURL}/form/?id=${record_id}`;
