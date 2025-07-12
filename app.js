@@ -155,7 +155,8 @@ app.post("/SaveRecords", (req, res) => {
   } = req.body;
 
   const record_id = crypto.randomBytes(4).toString("hex");
-  const qrcode_url = `http://localhost:3000/form/?id=${record_id}`;
+//   const qrcode_url = `http://localhost:3000/form/?id=${record_id}`;
+  const qrcode_url = `${baseURL}/form/?id=${record_id}`;
   const values = [
     record_id,
     room_name,
