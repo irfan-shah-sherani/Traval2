@@ -63,7 +63,7 @@ app.post("/login",(req,res)=>{
 
 app.get("/portal", (req, res) => {
     if (!req.session.user) {
-        return res.redirect("/login");
+        return res.redirect("/");
       }
   res.sendFile(path.join(__dirname, "views", "portal.html"));
 });
