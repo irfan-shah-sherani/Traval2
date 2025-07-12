@@ -53,9 +53,6 @@ fetch("/records")
     // Delete form
     row.querySelector(".delete-form").action = `delete/${record.record_id}`;
   
-    // Form link
-    row.querySelector(".form-link").href = `form/${record.qrcode_url}`;
-
     // Append row
     tbody.appendChild(row);
   });
