@@ -46,7 +46,7 @@ app.get("/records", (req, res) => {
       console.log(`Error Fetching data : ${err}`);
       return res.status(500).json({ error: "Database error" });
     }
-    console.log(result);
+    // console.log(result);
     res.json(result);
   });
 });
