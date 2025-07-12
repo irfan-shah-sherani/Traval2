@@ -55,7 +55,7 @@ app.get("/openpdf", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "downloadpdf.html"));
   });
 
-  
+
 app.get("/Records/For/pdf/:id", (req, res) => {
   const record_id = req.params.id;
 
@@ -88,7 +88,7 @@ app.get("/downloadpdf/:id", async (req, res) => {
       body: JSON.stringify({
         source: publicUrl,
         landscape: false,
-        use_print: false,
+        use_print: true,
       }),
     });
 
