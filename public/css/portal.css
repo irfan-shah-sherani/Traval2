@@ -272,7 +272,9 @@
     gap: 10px;
     margin-top: 0px;
   }
-  
+  #logout{
+    background-color: #6c757d;
+  }
   button {
     padding: 8px;
     font-size: 13px;

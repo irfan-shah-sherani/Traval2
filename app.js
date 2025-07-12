@@ -7,19 +7,28 @@ const axios = require("axios");
 const methodOverride = require('method-override');
 const fetch = require('node-fetch');
 require("dotenv").config();
-
-
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const username = process.env.username;
+const password =process.env.password;
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const fs = require("fs");
 app.use(methodOverride('_method'));
+
+
+app.use(session({
+    secret: "secret-key",
+    resave: false,
+    saveUninitialized: true
+  }));
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -28,6 +37,7 @@ const db = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   port: Number(process.env.DB_PORT),
 });
+
 db.connect((error) => {
   if (error) {
     console.log(`Database connect fail:${error}`);
@@ -36,9 +46,41 @@ db.connect((error) => {
   console.log("Database is connected");
 });
 
-app.get("/", (req, res) => {
+app.get("/",(req,res)=>{
+    res.sendFile(path.join(__dirname,"views","login.html"))
+})
+app.post("/login",(req,res)=>{
+    const {username,password }= req.body;
+    if (username === "admin" && password === "123") {
+        req.session.user = username;
+        res.redirect("/portal");
+      } else {
+        res.redirect("/");
+      }
+})
+
+
+
+app.get("/portal", (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login");
+      }
   res.sendFile(path.join(__dirname, "views", "portal.html"));
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get("/records", (req, res) => {
   db.query("select* from  TravalRecord", (err, result) => {
@@ -128,7 +170,16 @@ app.get('/Record/for/form/:id',(req,res)=>{
     })
 })
 
-
+app.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+      if (err) {
+        console.log("Logout error:", err);
+        return res.redirect('/dashboard');
+      }
+      res.redirect('/');
+    });
+  });
+  
 
 
 
