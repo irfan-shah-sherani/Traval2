@@ -75,7 +75,7 @@ app.get("/Records/For/pdf/:id", (req, res) => {
 
 app.get("/downloadpdf/:id", async (req, res) => {
   const id = req.params.id;
-  const qrcode_url = `http://localhost:3000/openpdf/?id=${id}`;
+  const publicUrl = `http://localhost:3000/openpdf/?id=${id}`;
 
   try {
     const response = await fetch("https://api.pdfshift.io/v3/convert/pdf", {
