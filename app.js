@@ -51,10 +51,11 @@ app.get("/records", (req, res) => {
   });
 });
 
-app.get("/openpdf/:id", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "downloadpdf.html"));
-});
+app.get("/openpdf", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "downloadpdf.html"));
+  });
 
+  
 app.get("/Records/For/pdf/:id", (req, res) => {
   const record_id = req.params.id;
 
