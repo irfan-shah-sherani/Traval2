@@ -226,7 +226,13 @@ app.get("/downloadpdf/:id", async (req, res) => {
       body: JSON.stringify({
         source: publicUrl,
         landscape: false,
-        use_print: true,
+        use_print: false,
+        format: "A4",
+        margin: "0cm",
+        scale: 1,          // No zoom out
+        viewport_width: 794,  // match A4 width in px at 96dpi
+        wait_for_network: true
+
       }),
     });
 
