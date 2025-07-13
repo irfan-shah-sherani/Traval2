@@ -47,8 +47,12 @@ fetch("/records")
     const qrImg = row.querySelector(".qr-img");
     qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(record.qrcode_url)}&size=100x100`;
     qrImg.alt = "QR Code";
+    row.querySelector(".phone-number").textContent = record.Phone_number;
+    row.querySelector(".customer-reference").textContent = record.customer_reference;
+    row.querySelector(".unified-number").textContent = record.unified_number;
 
-    row.querySelector(".pdf-link").href = `/downloadpdf/${record.record_id}`;;
+    row.querySelector(".pdf-link").href = `/downloadpdf/${record.record_id}`;
+    // row.querySelector(".pdf-link").href = `/openpdf/?id=${record.record_id}`;
 
     // Delete form
     row.querySelector(".delete-form").action = `delete/${record.record_id}`;

@@ -48,11 +48,16 @@ db.connect((error) => {
   console.log("Database is connected");
 });
 
-// app.get("/",(req,res)=>{
-//     res.sendFile(path.join(__dirname,"views","login.html"))
-// })
+
+
+
+
+
+
+// login page
+
 app.get("/", (req, res) => {
-    res.render("login"); // Will load views/login.ejs
+    res.render("login");
   });
 app.post("/login",(req,res)=>{
     const {username,password }= req.body;
@@ -63,8 +68,19 @@ app.post("/login",(req,res)=>{
         res.redirect("/");
       }
 })
+app.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.log("Logout error:", err);
+      return res.redirect('/dashboard');
+    }
+    res.redirect('/');
+  });
+});
 
 
+
+// portal page
 
 app.get("/portal", (req, res) => {
     if (!req.session.user) {
@@ -73,27 +89,12 @@ app.get("/portal", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "portal.html"));
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.get("/records", (req, res) => {
   db.query("select* from  TravalRecord", (err, result) => {
     if (err) {
       console.log(`Error Fetching data : ${err}`);
       return res.status(500).json({ error: "Database error" });
     }
-    // console.log(result);
     res.json(result);
   });
 });
@@ -102,6 +103,95 @@ app.get("/openpdf", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "downloadpdf.html"));
   });
 
+
+app.post("/SaveRecords", (req, res) => {
+  const {
+    room_name,
+    facility_name,
+    facility_number,
+    request_number,
+    request_type,
+    applicant_name,
+    creation_date,
+    request_amount,
+    expiry_date,
+    record_number,
+    request_status,
+    created_at,
+    reference_number,
+    passport_number,
+    Phone_number,
+    customer_reference,
+    unified_number
+  } = req.body;
+  baseURL = process.env.baseURL;
+  const record_id = crypto.randomBytes(4).toString("hex");
+  const qrcode_url = `${baseURL}/form/?id=${record_id}`;
+  const values = [
+    record_id,
+    room_name,
+    facility_name,
+    facility_number,
+    request_number,
+    request_type,
+    applicant_name,
+    creation_date,
+    request_amount,
+    expiry_date,
+    record_number,
+    request_status,
+    created_at,
+    reference_number,
+    passport_number,
+    qrcode_url,
+    Phone_number,
+    customer_reference,
+    unified_number
+  ];
+  const insertQuery = `
+    Insert into TravalRecord (
+        record_id,
+        room_name,
+        facility_name,
+        facility_number,
+        request_number,
+        request_type,
+        applicant_name,
+        creation_date,
+        request_amount,
+        expiry_date,
+        record_number,
+        request_status,
+        created_at,
+        reference_number,
+        passport_number,
+        qrcode_url,
+        Phone_number,
+        customer_reference,
+        unified_number
+    )values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+    `;
+  db.query(insertQuery, values, (error) => {
+    if (error) {
+      console.log(`Insert fail ${error}`);
+      return res.status(500).json({ error: "Insert fail" });
+    }
+
+    res.redirect("/");
+  });
+});
+
+app.post("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  db.query("DELETE FROM TravalRecord WHERE record_id = ?", [id], (err) => {
+      if (err) return res.status(500).send("Delete failed");
+      res.redirect("/");
+  });
+});
+
+
+
+// download pdf
 
 app.get("/Records/For/pdf/:id", (req, res) => {
   const record_id = req.params.id;
@@ -114,16 +204,17 @@ app.get("/Records/For/pdf/:id", (req, res) => {
       if (results.length === 0)
         return res.status(404).json({ error: "Record not found" });
 
-      res.json(results[0]); // Send the first record only
+      res.json(results[0]);
     }
   );
 });
 
-
-
 app.get("/downloadpdf/:id", async (req, res) => {
   const id = req.params.id;
-  const publicUrl = `https://traval2.onrender.com/openpdf/?id=${id}`;
+  baseURL = process.env.baseURL;
+  const publicUrl = `${baseURL}/openpdf/?id=${id}`;
+
+
 
   try {
     const response = await fetch("https://api.pdfshift.io/v3/convert/pdf", {
@@ -155,6 +246,10 @@ app.get("/downloadpdf/:id", async (req, res) => {
   }
 });
 
+
+
+
+// from page
 app.get('/form', (req, res) => {
     const id = req.query.id;
     res.sendFile(path.join(__dirname, "views", "form.html"));
@@ -174,115 +269,6 @@ app.get('/Record/for/form/:id',(req,res)=>{
         res.json(result);
     })
 })
-
-app.get('/logout', (req, res) => {
-    req.session.destroy(err => {
-      if (err) {
-        console.log("Logout error:", err);
-        return res.redirect('/dashboard');
-      }
-      res.redirect('/');
-    });
-  });
-  
-
-
-
-
-
-
-
-app.post("/SaveRecords", (req, res) => {
-  const {
-    room_name,
-    facility_name,
-    facility_number,
-    request_number,
-    request_type,
-    applicant_name,
-    creation_date,
-    request_amount,
-    expiry_date,
-    record_number,
-    request_status,
-    created_at,
-    reference_number,
-    passport_number,
-  } = req.body;
-  baseURL = process.env.baseURL;
-  const record_id = crypto.randomBytes(4).toString("hex");
-//   const qrcode_url = `http://localhost:3000/form/?id=${record_id}`;
-  const qrcode_url = `${baseURL}/form/?id=${record_id}`;
-  const values = [
-    record_id,
-    room_name,
-    facility_name,
-    facility_number,
-    request_number,
-    request_type,
-    applicant_name,
-    creation_date,
-    request_amount,
-    expiry_date,
-    record_number,
-    request_status,
-    created_at,
-    reference_number,
-    passport_number,
-    qrcode_url,
-  ];
-  const insertQuery = `
-    Insert into TravalRecord (
-        record_id,
-        room_name,
-        facility_name,
-        facility_number,
-        request_number,
-        request_type,
-        applicant_name,
-        creation_date,
-        request_amount,
-        expiry_date,
-        record_number,
-        request_status,
-        created_at,
-        reference_number,
-        passport_number,
-        qrcode_url
-    )values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-    `;
-  db.query(insertQuery, values, (error) => {
-    if (error) {
-      console.log(`Insert fail ${error}`);
-      return res.status(500).json({ error: "Insert fail" });
-    }
-
-    res.redirect("/");
-  });
-});
-
-
-
-
-
-
-
-
-
-
-//Delete
-app.post("/delete/:id", (req, res) => {
-    const id = req.params.id;
-    db.query("DELETE FROM TravalRecord WHERE record_id = ?", [id], (err) => {
-        if (err) return res.status(500).send("Delete failed");
-        res.redirect("/");
-    });
-});
-  
-
-
-
-
 
 
 

@@ -37,79 +37,61 @@
           <div class="left_english">
             <div class="field-row">
               <h3>Unified Number :</h3>
-              <p id="Unified_no">xxxxxxxxx</p>
+              <p id="Unified_no"></p>
             </div>
             <div class="field-row">
               <h3>Cr no :</h3>
-              <p id="cr_no">xxxxxxx</p>
+              <p id="cr_no"></p>
             </div>
             <div class="field-row">
               <h3>tel :</h3>
-              <p id="tel">xxxx</p>
+              <p id="phone_number">xxxx</p>
             </div>
             <div class="field-row">
               <h3>Date :</h3>
-              <p id="date">xx-xx-xxxx</p>
+              <p id="date"></p>
             </div>
             <div class="field-row">
               <h3>Ref Number :</h3>
-              <p id="Ref_no">xxxxx</p>
+              <p id="Ref_no"></p>
             </div>
           </div>
 
             <div class="main_qrcode">
-              <!-- ✅ Dynamic QR Code -->
               
         <img id="qrcode" src="" alt="QR Code" />
-
-        <script>
-          const urlParams = new URLSearchParams(window.location.search);
-          const id = urlParams.get("id");
-
-          fetch(`/Records/For/pdf/${id}`)
-            .then(res => res.json())
-            .then(data => {
-              if (!data || data.error) return console.error("No record found");
-
-              const qrImg = document.getElementById("qrcode");
-              qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(data.qrcode_url)}&size=150x150`;
-              qrImg.alt = "QR Code";
-
-              // You can also populate other fields here if needed
-              // document.getElementById("room_name").textContent = data.room_name;
-            })
-            .catch(err => {
-              console.error("Error fetching record:", err);
-            });
-        </script>
-
-
-              <p>د هذه الشهادة موثوقة إلا بعد التحقق منها من خلال مسح رمز الاستجابة السريعة (QR)</p>
-              <p>This certification is only valid after scanning the QR code.</p>
-            </div>
+        <a id="qrcode-link">https://eservices.ucci.org.sa/#/DocumentVerify</a>
+        <div class="header center content" style="
+        width: 60vw;
+        display: flex;
+        flex-direction:column ;">
+          <p style="direction: ltr;">تم إصدار التصديق بناء على طلب المشترك، دون أدنى مسؤولية على غرفة عنيزة عن محتوى الوثيقة. علماً أنه لا يُعتد بالتصديق إلا بعد التحقق منه من خلال قراءة رمز الـ QR This Certification was issued at the request of the subscriber, and the Onaizah Chamber name disclaims responsibility for its content. and this certification is only reliable after it has been verified by scanning the request's QR Code and reviewing the request's data details.</p>
+        </div>
+        </div>
+             
 
           <div class="right_arbi">
             <h3>شركة النقل البري على الباب</h3>
             <br><br>
             <div class="field-row">
               <h3>رقم المنشأة :</h3>
-              <p id="raqm">xxxxxxxxxx</p>
+              <p id="aUnified_no">xxxx</p>
             </div>
             <div class="field-row">
               <h3>رقم السجل التجاري :</h3>
-              <p id="tijarah">xxxxxxx</p>
+              <p id="acr_no">xxxx</p>
             </div>
             <div class="field-row">
               <h3>الهاتف :</h3>
-              <p id="hanif">xxxx</p>
+              <p id="aphone_number">xxxx</p>
             </div>
-            <div class="field-row">
+            <div class="afield-row " style="display: flex;">
               <h3>تاريخ الطلب :</h3>
-              <p id="hijri">xx/xx/xxxx<span>هـ</span></p>
+              <p id="adate">xxxx</p>
             </div>
             <div class="field-row">
               <h3 style="text-align: end;">رقم المرجع :</h3>
-              <p id="marjih">xxxx</p>
+              <p id="aRef_no">xxxx</p>
             </div>
           </div>
         </header>
@@ -125,10 +107,13 @@
               <div class="innerContent">
                 <div class="leftContent content">
                   <div class="text">الموافق:</div>
-                  <div style="direction: ltr;" class="text">7029784977 هوية رقم</div>
-                  <div class="text">الجنسية باكستان</div>
-                  <div class="text">المهنة: عامل دراجة نقل</div>
-                  <div class="text">تاريخها</div>
+                  <div style="direction: ltr;" class="text"><span class="span0">7029784977</span>   هوية رقم</div>
+                  <div class="text" ><span class="span1">باكستان</span>الجنسية </div>
+                  <div class="text">  <span class="span2">عامل دراجة نقل</span>المهنة: </div>
+                  <!-- <div class="text">تاريخها</div> -->
+                  <div class="text" <span class="span3">
+                  </span>مُرَتَّب</div>
+
 
                 </div>
                 <div class="rightContent content">
@@ -264,7 +249,7 @@
             <p>
               <b>
                 <span style="color: red;">تنويه:</span> صلاحية المستند حتى 
-                <span class="date">xxxxx</span>
+                <span class="date" id="date">xxxxx</span>
               </b>
             </p>
           </div>
@@ -273,7 +258,7 @@
         </div>
         <div class="bottom-line" style="background-color: lightslategray;padding: 1rem 2rem;margin-left: 55px;margin-right: 45px;border-radius: 20px 0px 20px 0px;margin-bottom: 10px;height: 40px;align-items: top;text-align: end;overflow: hidden;color: white;"><p>1 / 1</p></div>
         <!-- footer -->
-        <script src="/public/pdf.js"></script>
+        <script src="/js/pdf.js"></script>
 </div>
 </body>
 </html>
