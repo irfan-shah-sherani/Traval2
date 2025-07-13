@@ -295,7 +295,11 @@ body {
 @page {
   size: A4;
   margin: 0;
-}
+  /* landscape: false,format: "A4",
+        margin: "0cm",
+        scale: 1,  
+        viewport_width: 794, 
+        wait_for_network: true */
 
 /* =================PRINT STYLES================= */
 /* @media print {
