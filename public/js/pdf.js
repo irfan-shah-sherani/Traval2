@@ -20,6 +20,17 @@ document.getElementById("acr_no").innerHTML = data.customer_reference;
 document.getElementById("adate").innerHTML = data.expiry_date;
 document.getElementById("aRef_no").innerHTML = data.reference_number;
 
+// center
+document.getElementsByClassName("created_at").innerHTML = data.created_at;
+document.getElementsByClassName("first_party").innerHTML = data.first_party;
+document.getElementsByClassName("acr_no").innerHTML = data.second_party;
+document.getElementsByClassName("passport_number").innerHTML = data.passport_number;
+document.getElementsByClassName("visa_number").innerHTML = data.visa_number;
+
+// last date
+document.getElementsByClassName("last_date").innerHTML = data.expiry_date;
+document.getElementsByClassName("alast_date").innerHTML = data.expiry_date;
+
 
               const qrImg = document.getElementById("qrcode");
               qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(data.qrcode_url)}&size=150x150`;

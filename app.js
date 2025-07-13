@@ -79,7 +79,6 @@ app.get('/logout', (req, res) => {
 });
 
 
-
 // portal page
 
 app.get("/portal", (req, res) => {
@@ -143,7 +142,13 @@ app.post("/SaveRecords", (req, res) => {
     qrcode_url,
     Phone_number,
     customer_reference,
-    unified_number
+    unified_number,
+    ID_number,
+    Nationality,
+    first_party,
+    second_party,
+    salary,
+    visa_number
   ];
   const insertQuery = `
     Insert into TravalRecord (
@@ -165,8 +170,14 @@ app.post("/SaveRecords", (req, res) => {
         qrcode_url,
         Phone_number,
         customer_reference,
-        unified_number
-    )values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        unified_number,
+        ID_number,
+        Nationality,
+        first_party,
+        second_party,
+        salary,
+        visa_number
+    )values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     `;
   db.query(insertQuery, values, (error) => {
     if (error) {
@@ -185,8 +196,6 @@ app.post("/delete/:id", (req, res) => {
       res.redirect("/");
   });
 });
-
-
 
 // download pdf
 
@@ -215,8 +224,6 @@ app.get("/downloadpdf/:id", async (req, res) => {
   baseURL = process.env.baseURL;
   const publicUrl = `${baseURL}/openpdf/?id=${id}`;
 
-
-
   try {
     const response = await fetch("https://api.pdfshift.io/v3/convert/pdf", {
       method: "POST",
@@ -228,8 +235,8 @@ app.get("/downloadpdf/:id", async (req, res) => {
         source: publicUrl,
         landscape: false,format: "A4",
         margin: "0cm",
-        scale: 1,          // No zoom out
-        viewport_width: 794,  // match A4 width in px at 96dpi
+        scale: 1,  
+        viewport_width: 794, 
         wait_for_network: true
 
       }),
