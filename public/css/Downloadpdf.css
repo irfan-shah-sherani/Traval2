@@ -191,7 +191,7 @@ body {
   direction: rtl;
 }
 .text{
-  direction: rtl;
+  direction: ltr;
 }
 .leftContent .text {
   
