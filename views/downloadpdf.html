@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--remix icon cdn-->
-    <link rel="stylesheet" href="/css/Downloadpdf.css" />
+    <link rel="stylesheet" href="../public/css/Downloadpdf.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -20,8 +20,8 @@
     />
     <title>travel-tour</title>
   </head>
-  <body>
-    <!-- navbar-->
+  <div>
+    <div class="a4-page">    <!-- navbar-->
     <div class="pdf-wrapper">
       
             <div class="header">
@@ -62,17 +62,20 @@
         <img id="qrcode" src="" alt="QR Code" />
         <a id="qrcode-link">https://eservices.ucci.org.sa/#/DocumentVerify</a>
         <div class="header center content" style="
-        width: 60vw;
+        width: 100%;
         display: flex;
         flex-direction:column ;">
-          <p style="direction: ltr;">تم إصدار التصديق بناء على طلب المشترك، دون أدنى مسؤولية على غرفة عنيزة عن محتوى الوثيقة. علماً أنه لا يُعتد بالتصديق إلا بعد التحقق منه من خلال قراءة رمز الـ QR This Certification was issued at the request of the subscriber, and the Onaizah Chamber name disclaims responsibility for its content. and this certification is only reliable after it has been verified by scanning the request's QR Code and reviewing the request's data details.</p>
+          <p style="direction: rtl; font-size: 9px; font-weight: 700;">تم إصدار التصديق بناء على طلب المشترك، دون أدنى مسؤولية على غرفة عنيزة عن محتوى الوثيقة. علماً أنه لا يُعتد بالتصديق إلا بعد التحقق منه من خلال قراءة رمز الـ QR</p>
+          <p style="text-align: left; font-size: 9px; font-weight: 700;">This Certification was issued at the request of the subscriber, and the Onaizah Chamber name disclaims responsibility for its content. and this certification is only reliable after it has been verified by scanning the request's QR Code and reviewing the request's data details.</p>
         </div>
         </div>
              
 
           <div class="right_arbi">
-            <h3>شركة النقل البري على الباب</h3>
-            <br><br>
+            <h3>شركة النقل البري على <br/>الباب</h3>
+            <div>
+              
+         
             <div class="field-row">
               <h3>رقم المنشأة :</h3>
               <p id="aUnified_no">xxxx</p>
@@ -91,7 +94,7 @@
             </div>
             <div class="field-row">
               <h3 style="text-align: end;">رقم المرجع :</h3>
-              <p id="aRef_no">xxxx</p>
+              <p id="aRef_no">xxxx</p>   </div>
             </div>
           </div>
         </header>
@@ -108,8 +111,8 @@
                 <div class="leftContent content">
                   <div class="text">الموافق:</div>
                   <div style="direction: ltr;" class="text"><span class="span0">7029784977</span>   هوية رقم</div>
-                  <div class="text" ><span class="span1">باكستان</span>الجنسية </div>
-                  <div class="text">  <span class="span2">عامل دراجة نقل</span>المهنة: </div>
+                  <div class="text" >الجنسية : <span class="span1">باكستان</span></div>
+                  <div class="text"> المهنة: <span class="span2">عامل دراجة نقل</span></div>
                   <!-- <div class="text">تاريخها</div> -->
                   <div class="text" <span class="span3">
                   </span>مُرَتَّب</div>
@@ -119,7 +122,7 @@
                 <div class="rightContent content">
                   <div class="text">تاريخ العقد:</div>
                   <div class="text">الطرف الأول: شركة على الباب للنقل البري</div>
-                  <div class="text">الطرف الثاني : HAMID RAZA</div>
+                  <div class="text">HAMID RAZA : الطرف الثاني : </div>
                   <div class="text">DX9906171 : رقم الجواز</div>
                   <div class="text">1304778389 :رقم التأشيرة</div>
                 </div>
@@ -190,7 +193,7 @@
                   <div class="Arabic">11. الثاني طرف يتعهد بوضع جميع خدماته في إمكانية أول طرف ويتصرف عن نفسه</div>
                   <div class="English">11. The Second Party undertakes to place all its services at the disposal of the First
                     Party alone and shall refrain from doing any work for its own account or third parties with or without
-                    remuneration without written permission</div>
+                    remuneration without written notice from the first party</div>
                 </div>
 
                 <div class="clause">
@@ -237,7 +240,7 @@
               </b>
             </p>
           </div>
-        <div class="right_arabic" style="display: flex; width: 50%; align-items: center;">
+        <div class="right_arabic" style="display: flex; width: 55%; align-items: center;">
           <div class="main_arabic">
             <p>
               <b>
@@ -256,9 +259,10 @@
         <div class="footer_logo"></div></div>
           <!-- <img src="logo_foot.png" alt="logo" > -->
         </div>
-        <div class="bottom-line" style="background-color: lightslategray;padding: 1rem 2rem;border-radius: 20px 0px 20px 0px;margin-bottom: 10px;height: 40px;align-items: top;text-align: end;overflow: hidden;color: white;"><p>1 / 1</p></div>
+        <div class="bottom-line" style="background-color: rgb(126, 142, 160); color: white; text-align: end; border-radius: 0.6rem 0.1rem .6rem 0.1rem; padding: 0.4rem 2rem 0.4rem 0">1 / 1</div>
         <!-- footer -->
         <script src="/js/pdf.js"></script>
+</div>
 </div>
 </body>
 </html>
