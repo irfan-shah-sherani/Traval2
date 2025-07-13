@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".visa_number").innerHTML = data.visa_number;
       document.querySelector(".last_date").innerHTML = data.expiry_date;
       document.querySelector(".alast_date").innerHTML = data.expiry_date;
+      
     })
     .catch(err => {
       console.error("Error fetching record:", err);
