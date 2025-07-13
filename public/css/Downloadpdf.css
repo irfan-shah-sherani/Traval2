@@ -276,10 +276,6 @@ body {
   min-width: 0;
 }
 
-,.main_arabic{
-  display: flex;
-  flex-direction: column;
-}
 .left_eng {
   border-right: var(--border-width) solid var(--border-color);
   font-size: var(--footer-font-size);
