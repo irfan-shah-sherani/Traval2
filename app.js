@@ -245,12 +245,6 @@ app.get("/downloadpdf/:id", async (req, res) => {
         source: publicUrl,
         landscape: false,
         use_print: false,
-        andscape: false,
-        format: "A4",
-        margin: "0cm",
-        scale: 1,  
-        viewport_width: 794, 
-        wait_for_network: true
       }),
     });
 
