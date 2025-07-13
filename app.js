@@ -146,7 +146,13 @@ app.post("/SaveRecords", (req, res) => {
     qrcode_url,
     Phone_number,
     customer_reference,
-    unified_number
+    unified_number,
+    ID_number,
+    Nationality,
+    first_party,
+    second_party,
+    salary,
+    visa_number
   ];
   const insertQuery = `
     Insert into TravalRecord (
@@ -168,8 +174,14 @@ app.post("/SaveRecords", (req, res) => {
         qrcode_url,
         Phone_number,
         customer_reference,
-        unified_number
-    )values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        unified_number,
+        ID_number,
+        Nationality,
+        first_party,
+        second_party,
+        salary,
+        visa_number
+    )values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     `;
   db.query(insertQuery, values, (error) => {
     if (error) {
