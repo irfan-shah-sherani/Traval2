@@ -292,6 +292,9 @@ body {
   background-size: contain; /* 🔁 change from cover to contain */
   background-repeat: no-repeat;
 }
+.text{
+  direction: ltr;
+}
 @page {
   size: A4;
   margin: 0;
