@@ -186,12 +186,14 @@ body {
   height: auto;
   border-right: 3px solid var(--border-color);
   direction: ltr;
+  text-align: right;
 }
 .rightContent{
-  direction: ltr;
+  direction: rtl;
+  text-align: right;
 }
 .text{
-  direction: rtl;
+  /* direction: rtl; */
 }
 .leftContent .text {
   
