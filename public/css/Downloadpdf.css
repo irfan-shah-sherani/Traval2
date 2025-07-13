@@ -1,16 +1,10 @@
 /* =================CONFIGURATION VARIABLES================= */
 :root {
   /* Layout sizes - Easy to modify */
-  --header-height: auto;
-  --footer-height: 120px;
+  --header-height: 250px;
+  --footer-height: 95px;
   --content-padding: 20px;
   --border-width: 1px;
-  
-  /* Font sizes - Easy to modify */
-  /* --base-font-size: 14px;
-  --header-font-size: 12px;
-  --content-font-size: 10pt;
-  --footer-font-size: 10px; */
   
   --base-font-size: 9px;
   --header-font-size: 9px;
@@ -32,7 +26,8 @@
 }
 
 body {
-  width: 100%;
+  width: 794px; /* Exact width for A4 (96dpi) */
+  height: 1123px; /* Exact height for A4 (96dpi) */
   margin: 0;
   overflow-x: hidden;
   font-family: 'Droid Arabic Kufi', sans-serif;
@@ -115,7 +110,7 @@ body {
   justify-content: space-between;
   width: 100%;
   height: var(--header-height);
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   overflow: hidden;
   margin: 0 10px;
   border-bottom: var(--border-width) solid var(--border-color);
@@ -297,13 +292,20 @@ body {
   background-size: contain; /* 🔁 change from cover to contain */
   background-repeat: no-repeat;
 }
-.text{
-  direction: ltr;
+@page {
+  size: A4;
+  margin: 0;
 }
+  /* landscape: false,format: "A4",
+        margin: "0cm",
+        scale: 1,  
+        viewport_width: 794, 
+        wait_for_network: true */
+
 /* =================PRINT STYLES================= */
-@media print {
+/* @media print {
   :root {
-    --header-height: 20vh;
+    --header-height: auto;
     --footer-height: 8vh;
     --content-padding: 9px;
     --header-font-size: 9px;
@@ -334,22 +336,19 @@ body {
     display: flex;
     flex-direction: column;
   }
-  
-  /* Hide interactive elements */
+
   .button-container,
   .btn,
   #qrcode-link {
     display: block;
     text-align: center;
     font-size: 16px;
-    color: black;
+    color: blue;
     text-decoration: underline;
     margin-top: 5px;
     margin-bottom: 5px;
-    text-decoration: none;
   }
   
-  /* Compact header for print */
   .header1 {
     height: var(--header-height);
     padding: 0.5rem 1rem;
@@ -371,7 +370,6 @@ body {
     font-size: var(--header-font-size);
   }
   
-  /* Compact main content */
   .main-contant {
     flex: 1;
     display: flex;
@@ -404,7 +402,6 @@ body {
     margin: 8px 0;
   }
   
-  /* Compact footer */
   .main-footer {
     height: var(--footer-height);
     margin: 15px 5px 0 5px;
@@ -419,7 +416,7 @@ body {
     padding: 0 0.3rem;
   }
   
-  /* QR code optimization */
+
   #qrcode {
     width: 80px;
     height: 80px;
@@ -427,7 +424,6 @@ body {
     background: white;
   }
   
-  /* Force single page layout */
   .page-break {
     page-break-before: always;
   }
@@ -436,7 +432,6 @@ body {
     page-break-inside: avoid;
   }
   
-  /* Ensure borders print correctly */
   .header1,
   .leftContent,
   .left_eng,
@@ -445,14 +440,12 @@ body {
     -webkit-print-color-adjust: exact;
   }
   
-  /* Scale content to fit single page if needed */
   .main-contant {
     transform: scale(0.95);
     transform-origin: top center;
   }
 } 
 
-/* =================UTILITY CLASSES================= */
 .text-center {
   text-align: center;
 }
@@ -483,4 +476,4 @@ body {
 
 .large-text {
   font-size: 1.1em;
-}
+} */
