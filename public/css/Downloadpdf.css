@@ -297,7 +297,9 @@ body {
   background-size: contain; /* 🔁 change from cover to contain */
   background-repeat: no-repeat;
 }
-
+.text{
+  direction: ltr;
+}
 /* =================PRINT STYLES================= */
 @media print {
   :root {
