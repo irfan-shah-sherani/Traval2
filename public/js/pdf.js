@@ -30,7 +30,7 @@ fetch(`/Records/For/pdf/${id}`)
     document.querySelector(".passport_number").innerHTML = data.passport_number;
     document.querySelector(".visa_number").innerHTML = data.visa_number;
     document.querySelector(".last_date").innerHTML = data.expiry_date;
-    document.querySelector(".alate_date").innerHTML = data.expiry_date;
+    document.querySelector(".alaste_date").innerHTML = data.expiry_date;
 
   })
   .catch(err => {
