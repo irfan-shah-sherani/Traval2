@@ -439,3 +439,36 @@
     display: none;
   }
 }
+@media (max-width: 600px) {
+  .pure-transpose {
+    display: block;
+  }
+
+  .pure-transpose thead {
+    display: none; /* hide original headers */
+  }
+
+  .pure-transpose tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pure-transpose tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .pure-transpose td {
+    display: flex;
+  }
+
+  .pure-transpose td::before {
+    content: attr(data-label); /* Will be empty unless added manually */
+    font-weight: bold;
+    width: 100px;
+    flex-shrink: 0;
+  }
+}
