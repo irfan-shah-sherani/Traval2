@@ -303,10 +303,7 @@ body {
 /* =================PRINT STYLES================= */
 @media print {
   :root {
-    /* Reduced sizes for print */
-    /* --header-height: 140px;
-    --footer-height: 100px; */
-    --header-height: auto;
+    --header-height: 20vh;
     --footer-height: 8vh;
     --content-padding: 9px;
     --header-font-size: 9px;

@@ -177,7 +177,7 @@ app.post("/SaveRecords", (req, res) => {
       return res.status(500).json({ error: "Insert fail" });
     }
 
-    res.redirect("/");
+    res.redirect("/portal");
   });
 });
 
