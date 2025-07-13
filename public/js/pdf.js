@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("adate").innerHTML = data.expiry_date;
       document.getElementById("aRef_no").innerHTML = data.reference_number;
 
+
       // Center
       document.querySelector(".created_at").innerHTML = data.created_at;
       document.querySelector(".first_party").innerHTML = data.first_party;
@@ -37,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".last_date").innerHTML = data.expiry_date;
       document.querySelector(".alast_date").innerHTML = data.expiry_date;
       
+
+      document.querySelector(".Nationality").innerHTML = data.Nationality;
+      document.querySelector(".salary").innerHTML = data.salary;
+
     })
     .catch(err => {
       console.error("Error fetching record:", err);

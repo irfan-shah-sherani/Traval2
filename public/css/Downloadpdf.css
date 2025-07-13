@@ -193,7 +193,7 @@ body {
   text-align: right;
 }
 .text{
-  /* direction: rtl; */
+  direction: rtl;
 }
 .leftContent .text {
   
