@@ -21,15 +21,13 @@ document.getElementById("adate").innerHTML = data.expiry_date;
 document.getElementById("aRef_no").innerHTML = data.reference_number;
 
 // center
-document.getElementsByClassName("created_at").innerHTML = data.created_at;
-document.getElementsByClassName("first_party").innerHTML = data.first_party;
-document.getElementsByClassName("acr_no").innerHTML = data.second_party;
-document.getElementsByClassName("passport_number").innerHTML = data.passport_number;
-document.getElementsByClassName("visa_number").innerHTML = data.visa_number;
-
-// last date
-document.getElementsByClassName("last_date").innerHTML = data.expiry_date;
-document.getElementsByClassName("alast_date").innerHTML = data.expiry_date;
+document.querySelector(".created_at").innerHTML = data.created_at;
+document.querySelector(".first_party").innerHTML = data.first_party;
+document.querySelector(".second_party").innerHTML = data.second_party;
+document.querySelector(".passport_number").innerHTML = data.passport_number;
+document.querySelector(".visa_number").innerHTML = data.visa_number;
+document.querySelector(".last_date").innerHTML = data.expiry_date;
+document.querySelector(".alast_date").innerHTML = data.expiry_date;
 
 
     const qrImg = document.getElementById("qrcode");
