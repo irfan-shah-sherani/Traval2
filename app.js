@@ -220,7 +220,7 @@ app.get("/downloadpdf/:id", async (req, res) => {
     const response = await fetch("https://api.pdfshift.io/v3/convert/pdf", {
       method: "POST",
       headers: {
-        "X-API-Key": "sk_a7186186a35085a9c04c1c73e3b2b0b52fc75fc5",
+        "X-API-Key": "sk_b27c96037e7d21fa28c28a57133d956cf4d3c593",
         "Content-type": "application/json",
       },
       body: JSON.stringify({
