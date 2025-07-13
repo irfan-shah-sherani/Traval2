@@ -209,10 +209,14 @@ app.get("/Records/For/pdf/:id", (req, res) => {
   );
 });
 
+
 app.get("/downloadpdf/:id", async (req, res) => {
   const id = req.params.id;
   baseURL = process.env.baseURL;
   const publicUrl = `${baseURL}/openpdf/?id=${id}`;
+
+
+
   try {
     const response = await fetch("https://api.pdfshift.io/v3/convert/pdf", {
       method: "POST",
@@ -223,13 +227,7 @@ app.get("/downloadpdf/:id", async (req, res) => {
       body: JSON.stringify({
         source: publicUrl,
         landscape: false,
-        use_print: false,
-        format: "A4",
-        margin: "0cm",
-        scale: 1,          // No zoom out
-        viewport_width: 794,  // match A4 width in px at 96dpi
-        wait_for_network: true
-
+        use_print: true,
       }),
     });
 
