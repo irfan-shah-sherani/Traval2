@@ -185,11 +185,11 @@ body {
 .leftContent {
   height: auto;
   border-right: 3px solid var(--border-color);
-  direction: ltr;
+  /* direction: ltr; */
   text-align: right;
 }
 .rightContent{
-  direction: rtl;
+  /* direction: rtl; */
   text-align: right;
 }
 .text{
