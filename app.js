@@ -122,7 +122,13 @@ app.post("/SaveRecords", (req, res) => {
     passport_number,
     Phone_number,
     customer_reference,
-    unified_number
+    unified_number,
+    ID_number,
+    Nationality,
+    first_party,
+    second_party,
+    salary,
+    visa_number
   } = req.body;
   baseURL = process.env.baseURL;
   const record_id = crypto.randomBytes(4).toString("hex");
