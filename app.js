@@ -99,9 +99,6 @@ app.get("/records", (req, res) => {
   });
 });
 
-app.get("/openpdf", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "downloadpdf.html"));
-  });
 
 
 app.post("/SaveRecords", (req, res) => {
@@ -209,6 +206,9 @@ app.get("/Records/For/pdf/:id", (req, res) => {
   );
 });
 
+app.get("/openpdf", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "downloadpdf.html"));
+});
 
 app.get("/downloadpdf/:id", async (req, res) => {
   const id = req.params.id;
