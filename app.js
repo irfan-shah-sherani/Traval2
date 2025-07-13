@@ -213,9 +213,6 @@ app.get("/downloadpdf/:id", async (req, res) => {
   const id = req.params.id;
   baseURL = process.env.baseURL;
   const publicUrl = `${baseURL}/openpdf/?id=${id}`;
-
-
-
   try {
     const response = await fetch("https://api.pdfshift.io/v3/convert/pdf", {
       method: "POST",
