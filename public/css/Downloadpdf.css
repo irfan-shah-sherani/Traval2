@@ -6,11 +6,6 @@
   --content-padding: 20px;
   --border-width: 1px;
 
-  /* Font sizes - Easy to modify */
-  /* --base-font-size: 14px;
-  --header-font-size: 12px;
-  --content-font-size: 10pt;
-  --footer-font-size: 10px; */
 
   --base-font-size: 9px;
   --header-font-size: 9px;
@@ -32,8 +27,7 @@
 }
 
 body {
-  width: 794px;
-  height: 1123px;
+  width: 100%;
   margin: 0;
   overflow-x: hidden;
   font-family: "Droid Arabic Kufi", sans-serif;
