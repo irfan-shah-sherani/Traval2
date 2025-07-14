@@ -85,8 +85,8 @@ body {
 
 /* =================QR CODE STYLES================= */
 #qrcode {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   border: var(--border-width) solid var(--border-color);
   display: block;
   margin-top: 10px;
@@ -144,7 +144,7 @@ body {
   flex-direction: column;
   align-items: start;
   font-size: var(--header-font-size);
-  width: 35%;
+  width: 23%;
 }
 
 .left_english {
@@ -152,19 +152,17 @@ body {
   display: flex;
   flex-direction: column;
   font-size: var(--header-font-size);
-  width: 35%;
+  width: 22%;
 }
 
 .field-row {
   display: flex;
   align-items: center;
-  gap: 3px;
-  font-size: 12px;
-  margin-bottom: 2px;
+  font-size: 10px;
 }
 
 .field-row h3 {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   margin: 0;
 }
@@ -181,7 +179,7 @@ body {
 }
 
 .innerHeader {
-  font-size: 18.6px;
+  font-size: 16px;
   font-weight: 700;
   width: 100%;
   display: flex;
@@ -190,13 +188,13 @@ body {
 }
 
 .innerContent {
-  font-size: 12px;
+  font-size: 10px;
   text-align: right;
   height: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin: 15px 0;
+  margin: 8px 0;
 }
 
 .leftContent {
@@ -207,24 +205,21 @@ body {
 .condition {
   display: flex;
   flex-direction: column;
-  padding: 20px 20px;
-  gap: 3px;
 }
 
 .clause {
-  font-size: 12px;
+  font-size: 11px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0px 60px;
+  padding: 0px 25px;
 }
 
 .clause .Arabic,
 .clause .English {
   width: auto;
   line-height: 1.4;
-  gap: 2px;
 }
 
 .clause .Arabic {
@@ -234,14 +229,13 @@ body {
 }
 
 .clause .English {
-  text-transform: capitalize  ;
   max-width: 54%;
   text-align: left;
   direction: ltr;
 }
 
 .signature {
-  font-size: 10px;
+  font-size: 9px;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -266,7 +260,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  height: var(--footer-height);
   overflow: hidden;
 }
 
@@ -289,7 +282,7 @@ body {
   direction: rtl;
   flex: flex;
   text-align: right;
-  font-size: 12px;
+  font-size: 10px;
   border-left: 2px solid darkgrey;
   border-right: 2px solid darkgrey;
   padding: 0rem 2.5rem -1rem 2.5rem
