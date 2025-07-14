@@ -32,7 +32,8 @@
 }
 
 body {
-  width: 100%;
+  width: 794px;
+  height: 1123px;
   margin: 0;
   overflow-x: hidden;
   font-family: "Droid Arabic Kufi", sans-serif;
