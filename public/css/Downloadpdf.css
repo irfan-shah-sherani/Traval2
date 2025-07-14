@@ -1,10 +1,16 @@
 /* =================CONFIGURATION VARIABLES================= */
 :root {
   /* Layout sizes - Easy to modify */
-  --header-height: 250px;
-  --footer-height: 95px;
+  --header-height: auto;
+  --footer-height: 120px;
   --content-padding: 20px;
   --border-width: 1px;
+  
+  /* Font sizes - Easy to modify */
+  /* --base-font-size: 14px;
+  --header-font-size: 12px;
+  --content-font-size: 10pt;
+  --footer-font-size: 10px; */
   
   --base-font-size: 9px;
   --header-font-size: 9px;
@@ -26,8 +32,7 @@
 }
 
 body {
-  width: 794px; /* Exact width for A4 (96dpi) */
-  height: 1123px; /* Exact height for A4 (96dpi) */
+  width: 100%;
   margin: 0;
   overflow-x: hidden;
   font-family: 'Droid Arabic Kufi', sans-serif;
@@ -97,6 +102,9 @@ body {
   align-items: center;
   height: auto;
 }
+.show{
+  direction: ltr;
+}
 
 .header-img {
   width: 100%;
@@ -110,7 +118,7 @@ body {
   justify-content: space-between;
   width: 100%;
   height: var(--header-height);
-  padding: 1rem 1rem;
+  padding: 1rem 2rem;
   overflow: hidden;
   margin: 0 10px;
   border-bottom: var(--border-width) solid var(--border-color);
@@ -185,18 +193,9 @@ body {
 .leftContent {
   height: auto;
   border-right: 3px solid var(--border-color);
-  /* direction: ltr; */
-  text-align: right;
 }
-.rightContent{
-  /* direction: rtl; */
-  text-align: right;
-}
-.text{
-  direction: rtl;
-}
+
 .leftContent .text {
-  
   margin-right: 20px;
 }
 
@@ -301,9 +300,6 @@ body {
   background-size: contain; /* 🔁 change from cover to contain */
   background-repeat: no-repeat;
 }
-/* .text{
-  direction: ltr;
-} */
 @page {
   size: A4;
   margin: 0;

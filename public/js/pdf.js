@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".visa_number").innerHTML = data.visa_number;
       document.querySelector(".last_date").innerHTML = data.expiry_date;
       document.querySelector(".alast_date").innerHTML = data.expiry_date;
+      document.querySelector(".ID_number").innerHTML = data.ID_number;
+
       
 
       document.querySelector(".Nationality").innerHTML = data.Nationality;
