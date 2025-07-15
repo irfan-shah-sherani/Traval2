@@ -103,11 +103,12 @@ app.get("/openpdf", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "downloadpdf.html"));
   });
 
-function safeValue(val) {
-  return val === undefined || val === null || val === "" ? "EMPTY" : val;
-}
+
 
 app.post("/SaveRecords", (req, res) => {
+  function safeValue(val) {
+    return val === undefined || val === null || val === "" ? "EMPTY" : val;
+  }
   const {
     room_name,
     facility_name,
