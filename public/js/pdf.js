@@ -18,14 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("phone_number").innerHTML = data.Phone_number;
       document.getElementById("Unified_no").innerHTML = data.unified_number;
       document.getElementById("cr_no").innerHTML = data.customer_reference;
-      document.getElementById("date").innerHTML = data.expiry_date;
+      document.getElementById("date").innerHTML = data.creation_date;
       document.getElementById("Ref_no").innerHTML = data.reference_number;
 
       // Arabic
       document.getElementById("aphone_number").innerHTML = data.Phone_number;
       document.getElementById("aUnified_no").innerHTML = data.unified_number;
       document.getElementById("acr_no").innerHTML = data.customer_reference;
-      document.getElementById("adate").innerHTML = data.expiry_date;
+      document.getElementById("adate").innerHTML = data.creation_date;
       document.getElementById("aRef_no").innerHTML = data.reference_number;
 
 
