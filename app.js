@@ -120,7 +120,7 @@ app.post("/SaveRecords", (req, res) => {
     expiry_date,
     record_number,
     request_status,
-    created_at,
+    reference_name,
     reference_number,
     passport_number,
     Phone_number,
@@ -150,7 +150,7 @@ app.post("/SaveRecords", (req, res) => {
     safeValue(expiry_date),
     safeValue(record_number),
     safeValue(request_status),
-    safeValue(created_at),
+    safeValue(reference_name),
     safeValue(reference_number),
     safeValue(passport_number),
     qrcode_url,
@@ -293,8 +293,6 @@ app.get('/Record/for/form/:id',(req,res)=>{
         res.json(result);
     })
 })
-
-
 
 const port = 3000;
 app.listen(port, () => {
