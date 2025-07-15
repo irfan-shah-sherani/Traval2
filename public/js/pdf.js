@@ -30,20 +30,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       // Center
+      // Right
       document.querySelector(".created_at").innerHTML = data.created_at;
       document.querySelector(".first_party").innerHTML = data.first_party;
       document.querySelector(".second_party").innerHTML = data.second_party;
       document.querySelector(".passport_number").innerHTML = data.passport_number;
       document.querySelector(".visa_number").innerHTML = data.visa_number;
-      document.querySelector(".last_date").innerHTML = data.expiry_date;
-      document.querySelector(".alast_date").innerHTML = data.expiry_date;
-      document.querySelector(".ID_number").innerHTML = data.ID_number;
 
+
+      //Left
       
 
+      document.querySelector(".facility_name").innerHTML = data.facility_name;
       document.querySelector(".Nationality").innerHTML = data.Nationality;
+      document.querySelector(".facility_number").innerHTML = data.facility_number;
       document.querySelector(".salary").innerHTML = data.salary;
 
+
+      // last date
+      document.querySelector(".last_date").innerHTML = data.expiry_date;
+      document.querySelector(".alast_date").innerHTML = data.expiry_date;
+
+      // last
+      document.querySelector(".creater").innerHTML = data.creater;
     })
     .catch(err => {
       console.error("Error fetching record:", err);

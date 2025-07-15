@@ -51,7 +51,7 @@ fetch("/records")
     row.querySelector(".customer-reference").textContent = record.customer_reference;
     row.querySelector(".unified-number").textContent = record.unified_number;
 
-    row.querySelector(".pdf-link").href = `/downloadpdf/${record.record_id}`;
+    row.querySelector(".pdf-link").href = `/downloadpdf/${record.reference_number}`;
     // row.querySelector(".pdf-link").href = `/openpdf/?id=${record.record_id}`;
 
     // Delete form

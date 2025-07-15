@@ -103,6 +103,9 @@ app.get("/openpdf", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "downloadpdf.html"));
   });
 
+function safeValue(val) {
+  return val === undefined || val === null || val === "" ? "EMPTY" : val;
+}
 
 app.post("/SaveRecords", (req, res) => {
   const {
@@ -130,35 +133,37 @@ app.post("/SaveRecords", (req, res) => {
     salary,
     visa_number
   } = req.body;
+
   baseURL = process.env.baseURL;
   const record_id = crypto.randomBytes(4).toString("hex");
   const qrcode_url = `${baseURL}/form/?id=${record_id}`;
   const values = [
     record_id,
-    room_name,
-    facility_name,
-    facility_number,
-    request_number,
-    request_type,
-    applicant_name,
-    creation_date,
-    request_amount,
-    expiry_date,
-    record_number,
-    request_status,
-    created_at,
-    reference_number,
-    passport_number,
+    safeValue(room_name),
+    safeValue(facility_name),
+    safeValue(facility_number),
+    safeValue(request_number),
+    safeValue(request_type),
+    safeValue(applicant_name),
+    safeValue(creation_date),
+    safeValue(request_amount),
+    safeValue(expiry_date),
+    safeValue(record_number),
+    safeValue(request_status),
+    safeValue(created_at),
+    safeValue(reference_number),
+    safeValue(passport_number),
     qrcode_url,
-    Phone_number,
-    customer_reference,
-    unified_number,
-    ID_number,
-    Nationality,
-    first_party,
-    second_party,
-    salary,
-    visa_number
+    safeValue(Phone_number),
+    safeValue(customer_reference),
+    safeValue(unified_number),
+    safeValue(ID_number),
+    safeValue(Nationality),
+    safeValue(first_party),
+    safeValue(second_party),
+    safeValue(salary),
+    safeValue(visa_number),
+    safeValue(creater)
   ];
   const insertQuery = `
     Insert into TravalRecord (
@@ -186,8 +191,9 @@ app.post("/SaveRecords", (req, res) => {
         first_party,
         second_party,
         salary,
-        visa_number
-    )values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        visa_number,
+        creater
+    )values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     `;
   db.query(insertQuery, values, (error) => {
     if (error) {
@@ -203,7 +209,7 @@ app.post("/delete/:id", (req, res) => {
   const id = req.params.id;
   db.query("DELETE FROM TravalRecord WHERE record_id = ?", [id], (err) => {
       if (err) return res.status(500).send("Delete failed");
-      res.redirect("/");
+      res.redirect("/portal");
   });
 });
 
@@ -238,7 +244,7 @@ app.get("/downloadpdf/:id", async (req, res) => {
     const response = await fetch("https://api.pdfshift.io/v3/convert/pdf", {
       method: "POST",
       headers: {
-        "X-API-Key": "sk_b27c96037e7d21fa28c28a57133d956cf4d3c593",
+        "X-API-Key": "sk_09b36ef833e45dc7fbd0282466a12ef35444d641",
         "Content-type": "application/json",
       },
       body: JSON.stringify({
@@ -277,7 +283,7 @@ app.get('/form', (req, res) => {
 app.get('/Record/for/form/:id',(req,res)=>{
     const id = req.params.id;
     db.query(
-        "select* from TravalRecord where record_id = ?",
+        "select* from TravalRecord where reference_number = ?",
         [id],
         (error,result)=>{
         if(error){
